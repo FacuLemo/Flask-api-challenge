@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  flask_app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "5040:5040"
+    restart: always   
+    volumes:
+      - .:/Flask-api-challenge
+    env_file:
+      - .env
+    depends_on:
+      - flask_api_db
+    container_name: flask_api_challenge
+
+  flask_api_db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE} 
+      MYSQL_USER: ${MYSQL_USER} 
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./.data/db:/var/lib/mysql
+    ports:
+      - "5041:5041"
+    restart: always
+    container_name: flask_api_db
+
