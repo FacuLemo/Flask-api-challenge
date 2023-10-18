@@ -9,11 +9,12 @@ class UserBasicSchema(ma.Schema):
     password= fields.String()
     image=fields.Integer()
 
-"""
-class PaisBasicSchema(ma.Schema):
-    id = fields.Integer(dump_only=True)
-    nombre = fields.String()
 
+class CategorySchema(ma.Schema):
+    id = fields.Integer(dump_only=True)
+    name = fields.String()
+
+"""
 class ProvinciaBasicSchema(ma.Schema):
     id = fields.Integer(dump_only=True)
     nombre = fields.String()

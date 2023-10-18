@@ -10,6 +10,7 @@ app = Flask(__name__)
 # para correr Xampp en ubuntu:
 #  sudo /opt/lampp/manager-linux-x64.run
 
+load_dotenv()
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
 #app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY')
 #jwt = JWTManager(app)
@@ -17,6 +18,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 ma = Marshmallow(app)
-load_dotenv()
+
 
 from app.views import views
